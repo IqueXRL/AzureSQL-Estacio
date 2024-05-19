@@ -1,0 +1,27 @@
+-- Tabela de Motoristas
+CREATE TABLE Drivers (
+    DriverID INT PRIMARY KEY IDENTITY(1,1),
+    Nome NVARCHAR(100),
+    CNH NVARCHAR(50),
+    Endereço NVARCHAR(200),
+    Contato NVARCHAR(50)
+);
+
+-- Tabela de Clientes
+CREATE TABLE Clients (
+    ClientID INT PRIMARY KEY IDENTITY(1,1),
+    Nome NVARCHAR(100),
+    Empresa NVARCHAR(100),
+    Endereço NVARCHAR(200),
+    Contato NVARCHAR(50)
+);
+
+-- Tabela de Pedidos
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY IDENTITY(1,1),
+    ClientID INT FOREIGN KEY REFERENCES Clients(ClientID),
+    DriverID INT FOREIGN KEY REFERENCES Drivers(DriverID),
+    DetalhesPedido NVARCHAR(500),
+    DataEntrega DATETIME,
+    Status NVARCHAR(50)
+);
